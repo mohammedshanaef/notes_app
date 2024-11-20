@@ -33,7 +33,7 @@ class CustomNoteItem extends StatelessWidget {
                 icon: const Icon(Icons.delete),
                 onPressed: () {},
                 color: Colors.black,
-                iconSize: 30,
+                iconSize: 36,
               ),
             ),
             CustomText(
