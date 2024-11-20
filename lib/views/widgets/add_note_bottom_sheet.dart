@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:notes_app/views/constant.dart';
+import 'package:notes_app/views/widgets/custom_text.dart';
+import 'package:notes_app/views/widgets/custom_text_field.dart';
 
 class AddNoteBottomSheet extends StatelessWidget {
   const AddNoteBottomSheet({super.key});
@@ -8,51 +10,53 @@ class AddNoteBottomSheet extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Padding(
       padding: const EdgeInsets.all(18.0),
-      child: Column(
-        children: [
-          CustomTextField(
-            hintText: 'Title',
-          ),
-          SizedBox(
-            height: 30,
-          ),
-          CustomTextField(
-            hintText: 'content',
-            maxLines: 5,
-          ),
-        ],
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            CustomTextField(
+              hintText: 'Title',
+            ),
+            SizedBox(
+              height: 30,
+            ),
+            CustomTextField(
+              hintText: 'content',
+              maxLines: 5,
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            CustomButton(),
+            SizedBox(
+              height: 25,
+            ),
+          ],
+        ),
       ),
     );
   }
 }
 
-class CustomTextField extends StatelessWidget {
-  const CustomTextField({super.key, required this.hintText, this.maxLines = 1});
-
-  final String hintText;
-  final int maxLines;
+class CustomButton extends StatelessWidget {
+  const CustomButton({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
-      maxLines: maxLines,
-      cursorColor: kPrimaryColor,
-      decoration: InputDecoration(
-        border: buildBorder(),
-        enabledBorder: buildBorder(
-          Colors.white,
-        ),
-        focusedBorder: buildBorder(),
-        hintText: hintText,
+    return Container(
+      width: MediaQuery.of(context).size.width,
+      height: 55,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(16),
+        color: kPrimaryColor,
       ),
-    );
-  }
-
-  OutlineInputBorder buildBorder([Color? color]) {
-    return OutlineInputBorder(
-      borderRadius: BorderRadius.circular(16),
-      borderSide: BorderSide(color: color ?? kPrimaryColor // Ensure the default is a `Color`
-          ),
+      child: const Center(
+        child: CustomText(
+          text: 'Add',
+          fontSize: 18,
+          fontWeight: FontWeight.bold,
+          color: Colors.black,
+        ),
+      ),
     );
   }
 }
