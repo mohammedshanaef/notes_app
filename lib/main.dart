@@ -13,6 +13,9 @@ class NotesApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
+        floatingActionButtonTheme: const FloatingActionButtonThemeData(
+          shape: CircleBorder(),
+        ),
         fontFamily: 'Poppins',
         brightness: Brightness.dark,
       ),
