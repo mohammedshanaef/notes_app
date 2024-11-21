@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:notes_app/views/widgets/custom_appBar.dart';
-import 'package:notes_app/views/widgets/custom_note_item.dart';
+import 'package:notes_app/views/widgets/note_item.dart';
 import 'package:notes_app/views/widgets/custom_text.dart';
 import 'package:notes_app/views/widgets/notes_listview.dart';
 

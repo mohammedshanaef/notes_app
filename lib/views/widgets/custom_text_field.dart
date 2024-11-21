@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:notes_app/views/constant.dart';
+import 'package:notes_app/constant.dart';
 import 'package:notes_app/views/widgets/add_note_bottom_sheet.dart';
 
 class CustomTextField extends StatelessWidget {
