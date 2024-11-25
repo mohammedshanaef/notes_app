@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:notes_app/constant.dart';
 import 'package:notes_app/views/widgets/add_note_bottom_sheet.dart';
 
-class CustomTextField extends StatelessWidget {
-  const CustomTextField({super.key, required this.hintText, this.maxLines = 1, this.onSaved});
+class CustomTextFormField extends StatelessWidget {
+  const CustomTextFormField({super.key, required this.hintText, this.maxLines = 1, this.onSaved});
 
   final String hintText;
   final int maxLines;
@@ -14,12 +14,12 @@ class CustomTextField extends StatelessWidget {
     return TextFormField(
       onSaved: onSaved,
       validator: (value) {
-        if (value?.isEmpty ?? true) {
-          // if value is empty take  a ture value  then return field required
-          return 'Field is Required';
-        } else {
-          return null; 
+        if (value == null || value.isEmpty) {
+          return 'Field is required';
+        } else if (value.length < 6) {
+          return 'Minimum 6 characters required';
         }
+        return null;
       },
       maxLines: maxLines,
       cursorColor: kPrimaryColor,
