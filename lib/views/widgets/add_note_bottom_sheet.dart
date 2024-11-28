@@ -20,6 +20,8 @@ class AddNoteBottomSheet extends StatelessWidget {
           listener: (context, state) {
             if (state is AddNoteSuccess) {
               Navigator.pop(context);
+              // ScaffoldMessenger.of(context).showSnackBar(
+        // SnackBar(content: Text('Note added successfully!')),
             }
             if (state is AddNoteFailure) {
               print('Faild ${state.errorMessage}');
