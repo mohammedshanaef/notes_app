@@ -33,7 +33,7 @@ class AddNoteBottomSheet extends StatelessWidget {
           return AbsorbPointer(
             absorbing: state is AddNoteLoading ? true : false,
             child: Padding(
-              padding: EdgeInsets.only(left: 16, right: 16, bottom: MediaQuery.of(context).viewInsets.bottom + 14.0, top: 18),
+              padding: EdgeInsets.only(left: 16, right: 16, bottom: MediaQuery.of(context).viewInsets.bottom + 14.0, top: 18), // for layout the keyboard in the screen
               child: const SingleChildScrollView(
                 child: AddNoteForm(),
               ),
