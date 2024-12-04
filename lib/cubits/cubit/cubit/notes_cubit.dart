@@ -11,7 +11,8 @@ class NotesCubit extends Cubit<NotesState> {
   List<NoteModel>? notes;
 
   fetchAllNotes() async {
-    var notesBox = await Hive.openBox<NoteModel>(kNotesBox); // Wait for the box to open
-    notes = notesBox.values.toList(); // Access and convert values to a list
+    var notesBox = await Hive.openBox<NoteModel>(kNotesBox); // فتح الصندوق
+    notes = notesBox.values.toList(); // تحويل القيم إلى قائمة
+    emit(NotesLoaded(notes: notes)); // تحديث الحالة
   }
 }

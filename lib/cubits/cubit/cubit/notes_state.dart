@@ -4,3 +4,8 @@ part of 'notes_cubit.dart';
 abstract class NotesState {}
 
 class NotesInitial extends NotesState {}
+
+class NotesLoaded extends NotesState {
+  final List<NoteModel>? notes;
+  NotesLoaded({required this.notes});
+}
