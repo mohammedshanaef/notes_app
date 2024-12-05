@@ -59,10 +59,8 @@ class _AddNoteFormState extends State<AddNoteForm> {
                 onTap: () {
                   if (formKey.currentState!.validate()) {
                     formKey.currentState!.save();
-                    var currentDate = DateTime.now();
-                    var formmatedCurrentData = DateFormat('dd-mm-yyyy').format(currentDate);
                     var noteModel =
-                        NoteModel(title: title!, subtitle: subTitle!, date: formmatedCurrentData, color: Colors.blue.value);
+                        NoteModel(title: title!, subtitle: subTitle!, date: formatDate(DateTime.now()), color: Colors.blue.value);
                     BlocProvider.of<AddNoteCubit>(context).addNote(noteModel);
                   } else {
                     setState(() {
@@ -81,3 +79,6 @@ class _AddNoteFormState extends State<AddNoteForm> {
     );
   }
 }
+
+// إعادة صياغة الدالة لجعلها أوضح
+String formatDate(DateTime date) => "${date.day}/${date.month}/${date.year}";
