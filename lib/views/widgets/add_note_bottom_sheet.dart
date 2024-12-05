@@ -22,7 +22,13 @@ class AddNoteBottomSheet extends StatelessWidget {
             BlocProvider.of<NotesCubit>(context).fetchAllNotes();
             Navigator.pop(context);
             ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(content: Text('Note added successfully!')),
+              const SnackBar(
+                content: Text(
+                  'Note added successfully!',
+                  style: TextStyle(color: Colors.white, fontSize: 18),
+                ),
+                backgroundColor: kPrimaryColor,
+              ),
             );
           }
           if (state is AddNoteFailure) {

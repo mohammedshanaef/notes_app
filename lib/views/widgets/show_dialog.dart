@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:notes_app/constant.dart';
 import 'package:notes_app/cubits/cubit/cubit/notes_cubit.dart';
 import 'package:notes_app/models/note_model.dart';
 
@@ -26,9 +27,9 @@ void showDeleteConfirmationDialog(BuildContext context, NoteModel note) {
                 const SnackBar(
                   content: Text(
                     "Note deleted successfully!",
-                    style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.w500),
+                    style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.w500),
                   ),
-                  backgroundColor: Colors.teal,
+                  backgroundColor: kPrimaryColor,
                 ),
               );
             },
