@@ -8,7 +8,7 @@ import 'package:notes_app/cubits/cubit/cubit/notes_cubit.dart';
 import 'package:notes_app/models/note_model.dart';
 import 'package:notes_app/simple_bloc_observer.dart';
 import 'package:notes_app/views/screens/notes_views.dart';
-
+import 'package:notes_app/views/screens/onboarding_view.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized(); // Ensures Flutter is initialized before async code
@@ -21,9 +21,15 @@ void main() async {
   runApp(const NotesApp());
 }
 
-class NotesApp extends StatelessWidget {
+class NotesApp extends StatefulWidget {
   const NotesApp({super.key});
 
+  @override
+  State<NotesApp> createState() => _NotesAppState();
+}
+
+class _NotesAppState extends State<NotesApp> {
+  bool isOnBoardingCompleted = false;
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -37,7 +43,7 @@ class NotesApp extends StatelessWidget {
           fontFamily: 'Poppins',
           brightness: Brightness.dark,
         ),
-        home: const NotesViews(),
+        home: OnBoardingViewBody(),
       ),
     );
   }

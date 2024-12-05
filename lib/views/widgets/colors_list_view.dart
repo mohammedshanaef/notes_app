@@ -57,31 +57,26 @@ class _ColorsListViewState extends State<ColorsListView> {
     return SizedBox(
       height: 84, // ارتفاع العنصر بعد تعديل الحجم
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 10),
-        child: ListView.builder(
-          scrollDirection: Axis.horizontal,
-          itemCount: colors.length,
-          itemBuilder: (context, index) {
-            return Row(
-              children: [
-                GestureDetector(
-                  onTap: () {
-                    setState(() {
-                      currentIndex = index; // تحديث اللون المختار
-                    });
-                    widget.onColorPicked(colors[index]);
-                  },
-                  child: ColorsItem(
-                    isPicked: currentIndex == index,
-                    color: colors[index],
-                  ),
+          padding: const EdgeInsets.symmetric(horizontal: 10),
+          child: ListView.builder(
+            scrollDirection: Axis.horizontal, // Horizontal display
+            itemCount: colors.length, // item count is ColorList
+            itemBuilder: (context, index) {
+              return GestureDetector(
+                onTap: () {
+                  // When The User Added To the Color
+                  setState(() {
+                    currentIndex = index; // we are Refresh Picked Color
+                  });
+                  widget.onColorPicked(colors[index]); // passed Picked Color
+                },
+                child: ColorsItem(
+                  isPicked: currentIndex == index, // is color picked ?
+                  color: colors[index], // the current color
                 ),
-                const SizedBox(width: 10), // مسافة بين العناصر
-              ],
-            );
-          },
-        ),
-      ),
+              );
+            },
+          )),
     );
   }
 }
