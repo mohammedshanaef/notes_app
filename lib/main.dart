@@ -9,6 +9,7 @@ import 'package:notes_app/models/note_model.dart';
 import 'package:notes_app/simple_bloc_observer.dart';
 import 'package:notes_app/views/screens/notes_views.dart';
 
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized(); // Ensures Flutter is initialized before async code
   Bloc.observer = SimpleBlocObserver();

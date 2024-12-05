@@ -5,12 +5,9 @@ import 'package:notes_app/views/widgets/colors_list_view.dart';
 import 'package:notes_app/views/widgets/custom_button.dart';
 import 'package:notes_app/views/widgets/custom_text_field.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:intl/intl.dart';
 
 class AddNoteForm extends StatefulWidget {
-  const AddNoteForm({
-    super.key,
-  });
+  const AddNoteForm({super.key});
 
   @override
   State<AddNoteForm> createState() => _AddNoteFormState();
@@ -22,6 +19,9 @@ class _AddNoteFormState extends State<AddNoteForm> {
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
 
   String? title, subTitle;
+
+  Color selectedColor = Colors.blue; // اللون الافتراضي
+
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -35,23 +35,21 @@ class _AddNoteFormState extends State<AddNoteForm> {
             },
             hintText: 'Title',
           ),
-          const SizedBox(
-            height: 30,
-          ),
+          const SizedBox(height: 30),
           CustomTextFormField(
             onSaved: (value) {
               subTitle = value;
             },
-            hintText: 'content',
+            hintText: 'Content',
             maxLines: 5,
           ),
-          const SizedBox(
-            height: 15,
+          const SizedBox(height: 15),
+          ColorsListView(
+            onColorPicked: (color) {
+              selectedColor = color; // تحديث اللون المختار
+            },
           ),
-          const ColorsListView(),
-          const SizedBox(
-            height: 20,
-          ),
+          const SizedBox(height: 20),
           BlocBuilder<AddNoteCubit, AddNoteState>(
             builder: (context, state) {
               return CustomButton(
@@ -59,8 +57,12 @@ class _AddNoteFormState extends State<AddNoteForm> {
                 onTap: () {
                   if (formKey.currentState!.validate()) {
                     formKey.currentState!.save();
-                    var noteModel =
-                        NoteModel(title: title!, subtitle: subTitle!, date: formatDate(DateTime.now()), color: Colors.blue.value);
+                    var noteModel = NoteModel(
+                      title: title!,
+                      subtitle: subTitle!,
+                      date: formatDate(DateTime.now()),
+                      color: selectedColor.value, // تمرير اللون المختار
+                    );
                     BlocProvider.of<AddNoteCubit>(context).addNote(noteModel);
                   } else {
                     setState(() {
@@ -71,14 +73,12 @@ class _AddNoteFormState extends State<AddNoteForm> {
               );
             },
           ),
-          const SizedBox(
-            height: 25,
-          ),
+          const SizedBox(height: 25),
         ],
       ),
     );
   }
 }
 
-// إعادة صياغة الدالة لجعلها أوضح
+// دالة لتنسيق التاريخ
 String formatDate(DateTime date) => "${date.day}/${date.month}/${date.year}";
