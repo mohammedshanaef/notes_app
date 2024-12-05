@@ -8,6 +8,7 @@ import 'package:notes_app/cubits/cubit/cubit/notes_cubit.dart';
 import 'package:notes_app/models/note_model.dart';
 import 'package:notes_app/simple_bloc_observer.dart';
 import 'package:notes_app/views/screens/notes_views.dart';
+import 'package:notes_app/views/screens/onboarding_view.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized(); // Ensures Flutter is initialized before async code
@@ -28,16 +29,15 @@ class NotesApp extends StatelessWidget {
     return BlocProvider(
       create: (context) => NotesCubit(),
       child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          floatingActionButtonTheme: const FloatingActionButtonThemeData(
-            shape: CircleBorder(),
+          debugShowCheckedModeBanner: false,
+          theme: ThemeData(
+            floatingActionButtonTheme: const FloatingActionButtonThemeData(
+              shape: CircleBorder(),
+            ),
+            fontFamily: 'Poppins',
+            brightness: Brightness.dark,
           ),
-          fontFamily: 'Poppins',
-          brightness: Brightness.dark,
-        ),
-        home: const NotesViews(),
-      ),
+          home: OnBoardingViewBody()),
     );
   }
 }
