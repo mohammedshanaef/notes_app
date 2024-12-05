@@ -1,20 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:notes_app/models/note_model.dart';
 import 'package:notes_app/views/screens/edit_note_view_body.dart';
 
 class EditNoteView extends StatelessWidget {
-  const EditNoteView({super.key});
+  EditNoteView({super.key, required this.note});
+  final NoteModel note;
+
+  String? title, content;
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: Padding(
-        padding:  EdgeInsets.symmetric(horizontal: 16),
+        padding: const EdgeInsets.symmetric(horizontal: 16),
         child: Column(
           children: [
-            SizedBox(
+            const SizedBox(
               height: 55,
             ),
-            EditNoteViewBody(),
+            EditNoteViewBody(
+              note: note,
+            ),
           ],
         ),
       ),

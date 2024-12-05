@@ -3,15 +3,17 @@ import 'package:notes_app/constant.dart';
 import 'package:notes_app/views/widgets/add_note_bottom_sheet.dart';
 
 class CustomTextFormField extends StatelessWidget {
-  const CustomTextFormField({super.key, required this.hintText, this.maxLines = 1, this.onSaved});
+  const CustomTextFormField({super.key, required this.hintText, this.maxLines = 1, this.onSaved, this.onChange});
 
   final String hintText;
   final int maxLines;
   final void Function(String?)? onSaved;
+  final void Function(String)? onChange;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      onChanged: onChange,
       onSaved: onSaved,
       validator: (value) {
         if (value == null || value.isEmpty) {
