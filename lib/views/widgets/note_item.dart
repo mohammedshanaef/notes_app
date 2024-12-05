@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:notes_app/cubits/cubit/cubit/notes_cubit.dart';
 import 'package:notes_app/models/note_model.dart';
-import 'package:notes_app/views/edit_note_view.dart';
+import 'package:notes_app/views/screens/edit_note_view.dart';
 import 'package:notes_app/views/widgets/custom_text.dart';
+import 'package:notes_app/views/widgets/show_dialog.dart';
 
 class NoteItem extends StatelessWidget {
   NoteItem({super.key, required this.note});
@@ -43,10 +44,7 @@ class NoteItem extends StatelessWidget {
                 ),
                 trailing: IconButton(
                   icon: const Icon(Icons.delete),
-                  onPressed: () {
-                    note.delete();
-                    BlocProvider.of<NotesCubit>(context).fetchAllNotes();
-                  },
+                  onPressed: () => showDeleteConfirmationDialog(context, note),
                   color: Colors.black,
                   iconSize: 36,
                 ),
