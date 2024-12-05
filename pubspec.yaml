@@ -12,6 +12,7 @@ environment:
 
 # Dependencies specify other packages that your package needs in order to work.
 dependencies:
+  confetti: ^0.8.0
   cupertino_icons: ^1.0.6
   flutter:
     sdk: flutter
